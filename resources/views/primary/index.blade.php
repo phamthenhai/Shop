@@ -440,7 +440,7 @@
 
                 <ul id="products"
                     class="product-category-list products products-grid small-block-grid-2 medium-block-grid-3 large-block-grid-4 xlarge-block-grid-4 xxlarge-block-grid-4 columns-4 product-layout-grid">
-                    
+                    @foreach($data as $item)
                     <li class="product-item  spinner-circle palign-left " style="height: 360px;">
 
                         <figure class="product-inner">
@@ -457,11 +457,10 @@
                                              style="background-size: cover;">
 
                                             <span class="product_thumbnail_background"
-                                                  style="background-image: url(&quot;http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2014/08/ipad_air_gray-350x380.jpg&quot;); background-size: cover;"></span>
+                                                  style="background-image: url('{{ asset('public/images/product/') }}/{!! $item["image_link"] !!}'); background-size: cover;"></span>
                                             <img width="350" height="380"
-                                                 src="http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2014/08/ipad_air_silver-350x380.jpg"
+                                                 src="{{ asset('public/images/product/') }}/{!! $item["image_link"] !!}"
                                                  class="attachment-shop_catalog size-shop_catalog wp-post-image" alt=""
-                                                 srcset="http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2014/08/ipad_air_silver-350x380.jpg 350w, http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2014/08/ipad_air_silver-570x619.jpg 570w, http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2014/08/ipad_air_silver-116x126.jpg 116w, http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2014/08/ipad_air_silver-190x206.jpg 190w, http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2014/08/ipad_air_silver-350x380@2x.jpg 700w, http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2014/08/ipad_air_silver-116x126@2x.jpg 232w, http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2014/08/ipad_air_silver-190x206@2x.jpg 380w"
                                                  sizes="(max-width: 350px) 100vw, 350px">
                                         </div>
                                     </div><!--.product_thumbnail_wrapper-->
@@ -490,8 +489,7 @@
 
                                 </div>
 
-                                <p class="description-list">Not only is iPad Air 2 thinner, it’s also a lot more
-                                    powerful. We designed a chip, the A8X, that…</p>
+                                <p class="description-list">AA{!! $item["content"] !!}</p>
                             </div><!--.category-discription-grid-list-->
 
 
@@ -611,8 +609,7 @@
                             </div><!--.category-discription-grid-->
 
                             <div class="inner-desc">
-                                <p>Not only is iPad Air 2 thinner, it’s also a lot more powerful. We designed a chip,
-                                    the A8X, that…</p>
+                                <p>{!! $item["content"] !!}</p>
 
 
                                 <div class="prod-plugins">
@@ -666,6 +663,7 @@
                         </figure>
                         <!-- <div class="clearfix"></div> -->
                     </li>
+                        @endforeach
 
 
 

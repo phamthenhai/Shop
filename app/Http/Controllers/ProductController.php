@@ -17,7 +17,7 @@ class ProductController extends Controller
         $cate = new Product;
         $cate->name=$request->name;
         $cate->price=$request->price;
-        $cate->cate_id = 13;
+        $cate->cate_id = 1;
         //$cate->createdate= new DateTime();
         //$cate->deletedate= new DateTime();
         $cate->content=$request->contents;
