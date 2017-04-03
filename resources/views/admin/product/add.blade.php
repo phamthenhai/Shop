@@ -10,8 +10,8 @@
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
                 <label for="name">Cate</label>
-                <select name="parent">
-
+                <select name="sltParent">
+                    <?php cate_parent($list); ?>
                 </select>
             </p>
             <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">

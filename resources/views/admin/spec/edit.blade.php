@@ -1,16 +1,15 @@
 @extends('admin.admin')
-@section('handle','Add Cate')
+@section('controller','Edit Cate')
 @section('contentA')
     <div class="large-12 columns">
         <div class="account-forms-container">
             <div class="account-forms">
-                <form id="register" action="{!! route('admin.cate.add') !!}" method="post" class="register" style="display: block;" enctype="multipart/form-data">
+                <form id="register" action="{!! route('admin.cate.edit') !!}" method="post" class="register" style="display: block;" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                     <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
                         <label for="name">Cate</label>
-                        <select name="sltParent">
-                            <option value="0">Please Choose Category</option>
-                            <?php cate_parent($list); ?>
+                        <select name="parent">
+
                         </select>
                     </p>
                     <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
@@ -51,5 +50,4 @@
             </div><!-- .account-forms-->
         </div><!-- .account-forms-container-->
     </div><!-- .medium-8-->
-
 @endsection()

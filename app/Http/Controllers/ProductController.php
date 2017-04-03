@@ -5,26 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use App\Cate;
 
 use Illuminate\Support\Facades\Input;
 class ProductController extends Controller
 {
     public function getAdd(){
-//        $list = Cate::select("id", "name", "parent_id")->orderBy("id", "DESC")->get()->toArray();
-        return view("admin.product.add");
+        $list = Cate::select("id", "name", "parent_id")->orderBy("id", "DESC")->get()->toArray();
+        return view("admin.product.add", compact("list"));
     }
     public function postAdd(ProductRequest $request){
-        $cate = new Product;
-        $cate->name=$request->name;
-        $cate->price=$request->price;
-        $cate->cate_id = 1;
+        $product = new Product;
+        $product->name=$request->name;
+        $product->price=$request->price;
+        $product->cate_id = $request->sltParent;
         //$cate->createdate= new DateTime();
         //$cate->deletedate= new DateTime();
-        $cate->content=$request->contents;
-        $cate->image_link=$request->image_link;
-        $cate->image_list=$request->image_list;
-        $cate->view=$request->view;
-        $cate->discount=$request->discount;
+        $product->content=$request->contents;
+        $product->image_link=$request->image_link;
+        $product->image_list=$request->image_list;
+        $product->view=$request->view;
+        $product->discount=$request->discount;
         $name = Input::file('image_link')->getClientOriginalName();
         $file1 = Input::file('image_link');
         $file1->move(public_path().'/images/product/', $name);
@@ -56,10 +57,10 @@ class ProductController extends Controller
             $uploadcount ++;
 
         }
-        $cate->image_list=$list_image;
-        $cate->image_link=$name;
-        $cate->save();
-        return view("admin.product.add" );
+        $product->image_list=$list_image;
+        $product->image_link=$name;
+        $product->save();
+        return redirect()->route("admin.product.add")->with(["flash_message", "success"]);
     }
     public function getEdit(){
 //        $list = Cate::select("id", "name", "parent_id")->orderBy("id", "DESC")->get()->toArray();
