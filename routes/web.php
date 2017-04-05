@@ -38,6 +38,14 @@ Route::group(['prefix'=>'admin'], function(){
         Route::get('/edit/{id}', ['as'=>'admin.product.edit', 'uses'=>'ProductController@getEdit']);
         Route::post('/edit/{id}', ['as'=>'admin.product.edit', 'uses'=>'ProductController@postEdit']);
     });
+    Route::group(["prefix"=>"productdetail"], function(){
+        Route::get('/add', ['as'=>'admin.productdetail.add', 'uses'=>'ProductDetailController@getAdd']);
+        Route::post('/add', ['as'=>'admin.productdetail.add', 'uses'=>'ProductDetailController@postAdd']);
+        Route::get('/list', ['as'=>'admin.productdetail.list', 'uses'=>'ProductDetailController@getlist']);
+        Route::get('/delete/{id}', ['as'=>'admin.productdetail.delete', 'uses'=>'ProductDetailController@getDelete']);
+        Route::get('/edit/{id}', ['as'=>'admin.productdetail.edit', 'uses'=>'ProductDetailController@getEdit']);
+        Route::post('/edit/{id}', ['as'=>'admin.productdetail.edit', 'uses'=>'ProductDetailController@postEdit']);
+    });
     Route::group(["prefix"=>"spec"], function(){
         Route::get('/add', ['as'=>'admin.spec.add', 'uses'=>'SpecController@getAdd']);
         Route::post('/add', ['as'=>'admin.spec.add', 'uses'=>'SpecController@postAdd']);
