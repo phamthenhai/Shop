@@ -5,7 +5,7 @@
     <div class="large-12 columns">
         <div class="account-forms-container">
             <p class="account-forms">
-                <form id="register" action="{!! route('admin.productdetail.add') !!}" method="post" class="register"
+                <form id="register" action="{!! route('admin.product.add') !!}" method="post" class="register"
                       style="display: block;" enctype="multipart/form-data">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">

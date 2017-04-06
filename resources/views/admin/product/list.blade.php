@@ -14,34 +14,28 @@
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>
                             <tr align="center">
-                                <th>ID</th>
+                                <th>STT</th>
                                 <th>Name</th>
                                 <th>Price</th>
-                                <th>Date</th>
                                 <th>Status</th>
                                 <th>Delete</th>
                                 <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <?php $stt = 1; ?>
+                        @foreach($data as $item)
                             <tr class="odd gradeX" align="center">
-                                <td>1</td>
-                                <td>Áo Thun Nana</td>
-                                <td>200.000 VNĐ</td>
-                                <td>3 Minutes Age</td>
-                                <td>Hiện</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+                                <td><?php echo $stt; $stt += 1; ?></td>
+                                <td>{!! $item["name"] !!}</td>
+                                <td>{!! $item["price"] !!}</td>
+                                <td>
+                                    {!! $item["catename"] !!}
+                                </td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{!! URL::route("admin.product.delete", $item["id"]) !!}"> Delete</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route("admin.product.edit", $item["id"]) !!}">Edit</a></td>
                             </tr>
-                            <tr class="even gradeC" align="center">
-                                <td>2</td>
-                                <td>Áo Thun Polo</td>
-                                <td>250.000 VNĐ</td>
-                                <td>1 Hours Age</td>
-                                <td>Ẩn</td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
