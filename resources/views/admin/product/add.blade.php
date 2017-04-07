@@ -1,5 +1,5 @@
 @extends('admin.admin')
-@section('handle','Add Cate')
+@section('handle','Add Product')
 @section('contentA')
     <!-- Page Content -->
     <div class="large-12 columns">

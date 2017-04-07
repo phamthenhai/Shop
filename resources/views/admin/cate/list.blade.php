@@ -16,7 +16,7 @@
         </thead>
         <tbody>
         <?php $stt = 1; ?>
-        @foreach($data as $item)
+        @foreach($list as $item)
             <tr class="odd gradeX" align="center">
                 <td><?php echo $stt; $stt += 1; ?></td>
                 <td>{!! $item["name"] !!}</td>

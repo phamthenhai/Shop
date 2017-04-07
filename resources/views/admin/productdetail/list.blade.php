@@ -1,15 +1,10 @@
 @extends('admin.admin')
-@section('handle','Add Cate')
+@section('handle','List Product Detail'')
 @section('contentA')
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Product
-                            <small>List</small>
-                        </h1>
-                    </div>
                     <!-- /.col-lg-12 -->
                     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                         <thead>

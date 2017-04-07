@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Input;
 class ProductController extends Controller
 {
     public function getAdd(){
+        $data=array('menuParent'=>'Product', 'menuChild'=>'viewAdd');
         $list = Cate::select("id", "name", "parent_id")->orderBy("id", "DESC")->get()->toArray();
-        return view("admin.product.add", compact("list"));
+        return view("admin.product.add", $data)->with(compact("list"));
     }
     public function postAdd(ProductRequest $request){
         $product = new Product;
@@ -71,8 +72,9 @@ class ProductController extends Controller
         return view("admin.product.edit" );
     }
     public function getList(){
-        $data = Product::select('product.id', 'product.name','price', 'cate.name as catename')->join('cate', 'product.cate_id', '=', 'cate.id')->orderBy('id', 'DESC')->get()->toArray();
-        return view('admin.product.list', compact('data'));
+        $data = array('menuParent'=>'Product', 'menuChild'=>'viewList ');
+        $list = Product::select('product.id', 'product.name','price', 'cate.name as catename')->join('cate', 'product.cate_id', '=', 'cate.id')->orderBy('id', 'DESC')->get()->toArray();
+        return view('admin.product.list',$data)->with(compact('list'));
     }
     public function getDelete($id){
 //        $data = Cate::find($id);

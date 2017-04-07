@@ -1,15 +1,10 @@
 @extends('admin.admin')
-@section('handle','Add Cate')
+@section('handle','Edit product')
 @section('contentA')
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Product
-                            <small>Edit</small>
-                        </h1>
-                    </div>
                     <!-- /.col-lg-12 -->
                     <div class="col-lg-7" style="padding-bottom:120px">
                         <form action="" method="POST">

@@ -10,7 +10,8 @@ use App\Spec;
 
 class ProductDetailController extends Controller
 {
-    public function getAdd(){
+    public function getAdd($id){
+        $data = Product::find($id);
         $list = Spec::select("id", "name", "cate_id")->where("cate_id", 14)->orderBy("id", "DESC")->get()->toArray();
         return view("admin.productdetail.add", compact("list"));
     }

@@ -11,8 +11,9 @@ class CateController extends Controller
 {
     public function getAdd()
     {
+        $data=array('menuParent'=>'Cate', 'menuChild'=>'viewAdd');
         $list = Cate::select("id", "name", "parent_id")->orderBy("id", "DESC")->get()->toArray();
-        return view("admin.cate.add", compact("list"));
+        return view("admin.cate.add", $data)->with(compact("list"));
     }
 
     public function postAdd(CateRequest $request)
@@ -48,8 +49,9 @@ class CateController extends Controller
 
     public function getList()
     {
-        $data = Cate::select('id', 'name', 'parent_id')->orderBy('id', 'DESC')->get()->toArray();
-        return view('admin.cate.list', compact('data'));
+        $data = array('menuParent'=>'Cate', 'menuChild'=>'viewList ');
+        $list = Cate::select('id', 'name', 'parent_id')->orderBy('id', 'DESC')->get()->toArray();
+        return view('admin.cate.list', $data)->with(compact("list"));
     }
 
     public function getDelete($id)

@@ -39,8 +39,8 @@ Route::group(['prefix'=>'admin'], function(){
         Route::post('/edit/{id}', ['as'=>'admin.product.edit', 'uses'=>'ProductController@postEdit']);
     });
     Route::group(["prefix"=>"productdetail"], function(){
-        Route::get('/add', ['as'=>'admin.productdetail.add', 'uses'=>'ProductDetailController@getAdd']);
-        Route::post('/add', ['as'=>'admin.productdetail.add', 'uses'=>'ProductDetailController@postAdd']);
+        Route::get('/add/{id}', ['as'=>'admin.productdetail.add', 'uses'=>'ProductDetailController@getAdd']);
+        Route::post('/add/{id}', ['as'=>'admin.productdetail.add', 'uses'=>'ProductDetailController@postAdd']);
         Route::get('/list', ['as'=>'admin.productdetail.list', 'uses'=>'ProductDetailController@getlist']);
         Route::get('/delete/{id}', ['as'=>'admin.productdetail.delete', 'uses'=>'ProductDetailController@getDelete']);
         Route::get('/edit/{id}', ['as'=>'admin.productdetail.edit', 'uses'=>'ProductDetailController@getEdit']);
