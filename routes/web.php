@@ -12,6 +12,7 @@
 */
 
 Route::get('/', ['uses' => 'HomeController@getAllProduct', 'as' => 'getAllProduct']);
+Route::get('/detail', ['uses' => 'HomeController@getProductDetail', 'as' => 'getProductDetail']);
 Route::get('/primary', function () {
     return view('primary/index');
 });

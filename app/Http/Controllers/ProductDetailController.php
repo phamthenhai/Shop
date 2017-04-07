@@ -7,60 +7,48 @@ use App\Http\Requests\ProductDetailRequest;
 use App\Product;
 use App\Cate;
 use App\Spec;
+use App\ProductDetail;
 
 class ProductDetailController extends Controller
 {
     public function getAdd($id){
-        $data = Product::find($id);
-        $list = Spec::select("id", "name", "cate_id")->where("cate_id", 14)->orderBy("id", "DESC")->get()->toArray();
-        return view("admin.productdetail.add", compact("list"));
-    }
-    public function postAdd(ProductRequest $request){
-        $product = new Product;
-        $product->name=$request->name;
-        $product->price=$request->price;
-        $product->cate_id = $request->sltParent;
-        //$cate->createdate= new DateTime();
-        //$cate->deletedate= new DateTime();
-        $product->content=$request->contents;
-        $product->image_link=$request->image_link;
-        $product->image_list=$request->image_list;
-        $product->view=$request->view;
-        $product->discount=$request->discount;
-        $name = Input::file('image_link')->getClientOriginalName();
-        $file1 = Input::file('image_link');
-        $file1->move(public_path().'/images/product/', $name);
-        //image_list
-        $files = Input::file('image_list');
-        $file_count = count($files);
-        $uploadcount = 0;
-        $list_image = "";
-        foreach($files as $file) {
-            //$rules = array('file' => 'required'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
-            //$validator = Validator::make(array('file'=> $file), $rules);
-//            if($validator->passes()){
-//                $destinationPath = '/image/product/list/';
-//                $filename = $file->getClientOriginalName();
-//                $upload_success = $file->move($destinationPath, $filename);
-//                $uploadcount ++;
-//                $list_image += $filename;
-//                if($uploadcount < $file_count-1){
-//                    $list_image += ",";
-//                }
-//            }
-            $destinationPath = '/images/product/list/';
-            $filename = $file->getClientOriginalName();
-            $upload_success = $file->move(public_path().$destinationPath, $filename);
-            $list_image = $list_image.$filename;
-            if($uploadcount < $file_count-1){
-                $list_image = $list_image.",";
+        $dataT = Product::select('product.id', 'product.name','price', 'cate.parent_id as parent_id', 'cate.id as cateid')->join('cate', 'product.cate_id', '=', 'cate.id')->where("product.id",$id)->first();
+        $idC = 0;
+        if(isset($dataT["parent_id"]) ){
+            if($dataT["parent_id"] != 0){
+                $idC = $dataT["parent_id"];
+            }else{
+                $idC = $dataT["cateid"];
             }
-            $uploadcount ++;
-
         }
-        $product->image_list=$list_image;
-        $product->image_link=$name;
-        $product->save();
+        $list = Spec::select("id", "name", "cate_id")->where("cate_id", $idC)->orderBy("id", "DESC")->get()->toArray();
+        $listProductDetail = ProductDetail::select("id", "content", "spec_id", "product_id")->where("product_id", $id)->orderBy("id", "DESC")->get()->toArray();
+        return view("admin.productdetail.add", compact("listProductDetail"))->with(['dataT'=>$dataT, 'list'=>$list]);
+    }
+    public function postAdd(ProductDetailRequest $request, $id){
+        $dataT = Product::select('product.id', 'product.name','price', 'cate.parent_id as parent_id', 'cate.id as cateid')->join('cate', 'product.cate_id', '=', 'cate.id')->where("product.id",$id)->first();
+        $idC = 0;
+        if(isset($dataT["parent_id"]) ){
+            if($dataT["parent_id"] != 0){
+                $idC = $dataT["parent_id"];
+            }else{
+                $idC = $dataT["cateid"];
+            }
+        }
+        $list = Spec::select("id", "name", "cate_id")->where("cate_id", $idC)->orderBy("id", "DESC")->get()->toArray();
+        $listProductDetail = ProductDetail::select("id", "content", "spec_id", "product_id")->where("product_id", $id)->orderBy("id", "DESC")->get()->toArray();
+        foreach($list as $item){
+            $productDetail = ProductDetail::select("id", "content", "spec_id", "product_id")->where([
+                ['product_id', '=', $id],
+                ['spec_id', '=', $item["id"]],
+            ])->first();
+            if($productDetail == null){
+            $productDetail = new ProductDetail;}
+            $productDetail->product_id=$request->product_id;
+            $productDetail->spec_id=$item["id"];
+            $productDetail->content = $request->input('spec_'.$item["id"]);
+            $productDetail->save();
+        }
         return redirect()->route("admin.product.add")->with(["flash_message", "success"]);
     }
     public function getEdit(){
