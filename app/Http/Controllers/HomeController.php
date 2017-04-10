@@ -11,8 +11,8 @@ class HomeController extends Controller
         $data = Product::select("id", "name", "price", "discount", "image_link", "image_list", "content")->orderBy("id", "DESC")->get()->toArray();
         return view('primary.index', compact("data"));
     }
-    public function getProductDetail(){
-        //$data = Product::select("id", "name", "price", "discount", "image_link", "image_list", "content")->orderBy("id", "DESC")->get()->toArray();
-        return view('primary.detail');
+    public function getProductDetail($id){
+        $data = Product::find($id);
+        return view('primary.detail')->with(compact("data"));
     }
 }

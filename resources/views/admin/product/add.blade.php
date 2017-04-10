@@ -43,6 +43,10 @@
                 <label for="desc">List Image</label>
                 <input type="file" class="woocommerce-Input woocommerce-Input--text input-text" name="image_list[]" multiple
                        id="image_list" value="">
+            </p> <p class="woocommerce-FormRow woocommerce-FormRow--wide form-row form-row-wide">
+                <label for="desc">Description</label>
+                <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="desc"
+                       id="desc" value="">
             </p>
             <p class="woocomerce-FormRow form-row" style="text-align: center;">
                 <input type="submit"

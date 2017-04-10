@@ -25,6 +25,7 @@ class ProductController extends Controller
         $product->content=$request->contents;
         $product->image_link=$request->image_link;
         $product->image_list=$request->image_list;
+        $product->description=$request->desc;
         $product->view=$request->view;
         $product->discount=$request->discount;
         $name = Input::file('image_link')->getClientOriginalName();

@@ -449,7 +449,7 @@
                             <!-- Product Thumbnail -->
 
                             <div class="image-container standart">
-                                <a href="http://woodstock.temashdesign.com/electronics/product/apple-ipad-air/">
+                                <a href="{!! URL::route("detail", $item["id"]) !!}">
 
 
                                     <div class="product_thumbnail_wrapper">
