@@ -152,7 +152,7 @@
     <script type="text/javascript" src="{{url('public/js/picturefill.min.js')}}"></script>
     <script type="text/javascript" src="{{url('public/js/woocommerce-add-to-cart.js')}}"></script>
     <script>var ms_grabbing_curosr = 'http://woodstock.temashdesign.com/electronics/wp-content/plugins/masterslider/public/assets/css/common/grabbing.cur', ms_grab_curosr = 'http://woodstock.temashdesign.com/electronics/wp-content/plugins/masterslider/public/assets/css/common/grab.cur';</script>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet"/>
     <style type="text/css">.recentcomments a {
             display: inline !important;
             padding: 0 !important;
@@ -3360,13 +3360,5 @@
         <div class="fr-loading-icon"></div>
     </div>
 </div>
-<span role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite"
-                                                                                      class="select2-hidden-accessible"></span><span
-        role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite"
-                                                                                        class="select2-hidden-accessible"></span><span
-        role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite"
-                                                                                        class="select2-hidden-accessible"></span><span
-        role="status" aria-live="polite" class="select2-hidden-accessible"></span><span role="status" aria-live="polite"
-                                                                                        class="select2-hidden-accessible"></span>
 </body>
 </html>

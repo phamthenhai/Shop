@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\ProductDetail;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,7 @@ class HomeController extends Controller
     }
     public function getProductDetail($id){
         $data = Product::find($id);
-        return view('primary.detail')->with(compact("data"));
+        $dataT = ProductDetail::select('product_detail.id', 'product_detail.content','specifications.name as namespec' )->join('specifications', 'product_detail.spec_id', '=', 'specifications.id')->where("product_id",$id)->get()->toArray();
+        return view('primary.detail')->with(compact(["data", "dataT"]));
     }
 }

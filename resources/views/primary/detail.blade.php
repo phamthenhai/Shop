@@ -173,71 +173,6 @@
                                     </div>
                                     <!-- END MasterSlider -->
 
-                                    <script>
-                                        ( window.MSReady = window.MSReady || [] ).push(function ($) {
-
-                                            "use strict";
-                                            var masterslider_3e03 = new MasterSlider();
-
-                                            // slider controls
-                                            masterslider_3e03.control('bullets', {
-                                                autohide: true,
-                                                overVideo: true,
-                                                dir: 'h',
-                                                align: 'bottom',
-                                                space: 6,
-                                                margin: 10
-                                            });
-                                            masterslider_3e03.control('timebar', {
-                                                autohide: false,
-                                                overVideo: true,
-                                                align: 'bottom',
-                                                color: '#FFFFFF',
-                                                width: 4
-                                            });
-                                            // slider setup
-                                            masterslider_3e03.setup("MS58e76ded13e03", {
-                                                width: 400,
-                                                height: 800,
-                                                minHeight: 0,
-                                                space: 0,
-                                                start: 1,
-                                                grabCursor: true,
-                                                swipe: true,
-                                                mouse: true,
-                                                keyboard: false,
-                                                layout: "boxed",
-                                                wheel: false,
-                                                autoplay: true,
-                                                instantStartLayers: false,
-                                                loop: true,
-                                                shuffle: false,
-                                                preload: 0,
-                                                heightLimit: true,
-                                                autoHeight: false,
-                                                smoothHeight: true,
-                                                endPause: false,
-                                                overPause: true,
-                                                fillMode: "fill",
-                                                centerControls: true,
-                                                startOnAppear: false,
-                                                layersMode: "center",
-                                                autofillTarget: "",
-                                                hideLayers: false,
-                                                fullscreenMargin: 0,
-                                                speed: 200,
-                                                dir: "v",
-                                                parallaxMode: 'swipe',
-                                                view: "basic"
-                                            });
-
-
-                                            $("head").append("<link rel='stylesheet' id='ms-fonts'  href='//fonts.googleapis.com/css?family=Lato:300,regular,900|Great+Vibes:regular' type='text/css' media='all' />");
-
-                                            window.masterslider_instances = window.masterslider_instances || [];
-                                            window.masterslider_instances.push(masterslider_3e03);
-                                        });
-                                    </script>
 
                                 </aside>
                                 <aside class="widget woocommerce widget_recent_reviews"><h3 class="widget-title">Recent
@@ -312,32 +247,30 @@
 
                                         <div id="product-images-carousel"
                                              class="owl-carousel owl-theme owl-loaded owl-drag" data-slider-id="1">
-                                            <div class="owl-stage-outer">
-                                                <div class="owl-stage"
-                                                     style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 1872px;">
-                                                    <!--sadsadad-->
-                                                    @foreach(explode( ",",$data["image_list"]) as $item)
-                                                    <div class="owl-item active" style="width: 468px;">
-                                                        <div class="easyzoom el_zoom is-ready">
-                                                            <a data-fresco-group="product-gallery"
-                                                               data-fresco-options="fit: 'width'" class="fresco"
-                                                               href="http://woodstock.temashdesign.com/electronics/wp-content/uploads/sites/4/2016/02/iphone6.jpg">
-                                                                <img width="570" height="619"
-                                                                     src="{{ asset('public/images/product/list') }}/{!! $item !!}"
-                                                                     class="attaeasyzoom-flyoutchment-shop_single size-shop_single wp-post-image"
-                                                                     alt=""
-                                                                     srcset=""
-                                                                     sizes="(max-width: 570px) 100vw, 570px"> <span
-                                                                        class="product_image_zoom_button"
-                                                                        data-fresco-group="product-gallery"><i
-                                                                            class="fa fa-expand"></i></span>
-                                                            </a>
 
+                                                    <?php $srcset=""; ?>
+                                                    @foreach(explode( ",",$data["image_list"]) as $item)
+                                                        <?php $srcset=$srcset. asset('public/images/product/list').'/'. $item .', '?>
+                                                    @endforeach
+                                                    @foreach(explode( ",",$data["image_list"]) as $item)
+                                                        <div class="owl-item" style="width: 468px;">
+                                                            <div class="easyzoom el_zoom is-ready">
+                                                                <a data-fresco-group="product-gallery"
+                                                                   data-fresco-options="fit: 'width'" class="fresco"
+                                                                   href="{{ asset('public/images/product/list') }}/{!! $item !!}">
+                                                                    <img width="570" height="619"
+                                                                         src="{{ asset('public/images/product/list') }}/{!! $item !!}"
+                                                                         class="attaeasyzoom-flyoutchment-shop_single size-shop_single wp-post-image"
+                                                                         alt=""
+                                                                         sizes="(max-width: 570px) 100vw, 570px"> <span
+                                                                            class="product_image_zoom_button"
+                                                                            data-fresco-group="product-gallery"><i
+                                                                                class="fa fa-expand"></i></span>
+                                                                </a>
+
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                        @endforeach
-                                                </div>
-                                            </div>
+                                                    @endforeach
                                             <div class="owl-nav">
                                                 <div class="owl-prev disabled"></div>
                                                 <div class="owl-next"></div>
@@ -359,21 +292,20 @@
 
                                 <div class="product_summary_thumbnails_wrapper with-sidebar">
                                     <div>
-
-
                                         <div class="product_thumbnails">
                                             <div class="swiper-container">
                                                 <div class="swiper-wrapper" style="width: 382.7px; height: 90px;">
                                                     @foreach(explode( ",",$data["image_list"]) as $item)
-                                                    <div class="swiper-slide swiper-slide-visible swiper-slide-active"
-                                                         style="width: 95.675px; height: 90px;"><img width="80"
-                                                                                                     height="80"
-                                                                                                     src="{{ asset('public/images/product/list/') }}/{!! $item !!}"
-                                                                                                     class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
-                                                                                                     alt=""
-                                                                                                     srcset=""
-                                                                                                     sizes="(max-width: 80px) 100vw, 80px">
-                                                    </div>
+                                                        <div class="swiper-slide swiper-slide-visible swiper-slide-active"
+                                                             style="width: 95.675px; height: 90px;">
+                                                            <img width="80"
+                                                                 height="80"
+                                                                 src="{{ asset('public/images/product/list/') }}/{!! $item !!}"
+                                                                 class="attachment-shop_thumbnail size-shop_thumbnail wp-post-image"
+                                                                 alt=""
+                                                                 srcset=""
+                                                                 sizes="(max-width: 80px) 100vw, 80px">
+                                                        </div>
                                                     @endforeach
                                                 </div><!-- /.swiper-wrapper -->
 
@@ -578,11 +510,12 @@
                                         <h2>Additional Information</h2>
                                         <table class="shop_attributes">
                                             <tbody>
+                                            @foreach($dataT as $item)
                                             <tr class="">
-                                                <th>cpu</th>
-                                                <td><p>A8</p>
+                                                <th>{!! $item["namespec"] !!}</th>
+                                                <td><p>{!! $item["content"] !!}</p>
                                                 </td>
-                                            </tr>
+                                            </tr>@endforeach
                                             </tbody>
                                         </table>
                                     </div>

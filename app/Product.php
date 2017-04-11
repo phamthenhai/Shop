@@ -13,4 +13,7 @@ class Product extends Model
     public function cate(){
         return $this->belongsTo('App\Cate','cate_id', 'id');
     }
+    public function productdetail(){
+        return $this->hasMany('App\ProductDetail','product_id', 'id');
+    }
 }
