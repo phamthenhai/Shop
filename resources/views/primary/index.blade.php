@@ -97,7 +97,7 @@
                             Categories</h3>
                         <ul class="product-categories">
                             <li class="cat-item cat-item-167 cat-parent"><a
-                                        href="http://woodstock.temashdesign.com/electronics/product-category/cellphones/">Cellphones<span
+                                        href="">Cellphones<span
                                             class="child-indicator"></span></a> <span class="count">(24)</span>
                                 <ul class="children">
                                     <li class="cat-item cat-item-168"><a
@@ -693,4 +693,29 @@
 
         </div><!-- .row -->
     </div>
+    <script>
+        jQuery(document).ready(function(){
+            jQuery('.widget_product_categories .cat-parent > a').each(function(){
+                var $childIndicator = jQuery('<span class="child-indicator"></span>');
+
+                if(jQuery(this).siblings('.children').is(':visible')){
+                    $childIndicator.addClass( 'open' );
+                }
+
+                $childIndicator.click(function(){
+                    jQuery(this).parent().siblings('.children').toggle( 'fast', function(){
+                        if(jQuery(this).is(':visible')){
+                            $childIndicator.addClass( 'open' );
+                        }else{
+                            $childIndicator.removeClass( 'open' );
+                        }
+                    });
+                    return false;
+                });
+                jQuery(this).append($childIndicator);
+            });
+
+
+        });
+    </script>
 @endsection()

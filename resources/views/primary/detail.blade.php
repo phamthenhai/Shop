@@ -679,4 +679,5 @@
         </div><!-- #content -->
 
     </div>
+
 @endsection()

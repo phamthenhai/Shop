@@ -9,8 +9,6 @@
     <link rel="shortcut icon"
           href="http://themes.temashdesign.com/woodstock/electronics/wp-content/themes/woodstock/favicon.png">
 
-
-    <script async="" src="http://www.google-analytics.com/analytics.js"></script>
     <script type="text/javascript">document.documentElement.className = document.documentElement.className + ' yes-js js_active js'</script>
     <title>Shop</title>
     <style>
@@ -134,7 +132,7 @@
           type="text/css" media="all">
     <script type="text/javascript" src="{{url('public/js/jquery.js')}}"></script>
     <script type="text/javascript" src="{{url('public/js/jquery-migrate.min.js')}}"></script>
-    <script type="text/javascript" src="{{url('public/js/jquery.themepunch.tools.min.js')}}'"></script>
+    <script type="text/javascript" src="{{url('public/js/jquery.themepunch.tools.min.js')}}"></script>
     <script type="text/javascript" src="{{url('public/js/jquery.themepunch.revolution.min.js')}}"></script>
     <script type="text/javascript">
         /* <![CDATA[ */
@@ -150,6 +148,7 @@
     </script>
     <script type="text/javascript" src="{{url('public/js/add-to-cart.min.js')}}"></script>
     <script type="text/javascript" src="{{url('public/js/picturefill.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('public/js/mastersslider.js')}}"></script>
     <script type="text/javascript" src="{{url('public/js/woocommerce-add-to-cart.js')}}"></script>
     <script>var ms_grabbing_curosr = 'http://woodstock.temashdesign.com/electronics/wp-content/plugins/masterslider/public/assets/css/common/grabbing.cur', ms_grab_curosr = 'http://woodstock.temashdesign.com/electronics/wp-content/plugins/masterslider/public/assets/css/common/grab.cur';</script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.css" rel="stylesheet"/>
@@ -874,7 +873,7 @@
 
 
                                     <a href="http://woodstock.temashdesign.com/electronics/" rel="home"><img
-                                                class="site-logo" src="./Products – Woodstock_files/logo.png"
+                                                class="site-logo" src="{{ asset('public/images/') }}/logo.png"
                                                 alt="Woodstock"></a>
 
 
@@ -1790,7 +1789,7 @@
                                 <div class="large-6 columns copytxt"><p>© 2017 - Woodstock Woocommerce Theme. Created by
                                         <a href="http://www.temashdesign.com/">TemashDesign</a></p></div>
                                 <div class="large-6 columns cards">
-                                    <img src="./Products – Woodstock_files/payment_cards.png" alt="">
+                                    <img src="{{ asset('public/images/') }}/payment_cards.png" alt="">
                                 </div>
 
                             </div>
@@ -2817,7 +2816,7 @@
                             Categories</h3>
                         <ul class="product-categories">
                             <li class="cat-item cat-item-167 cat-parent"><a
-                                        href="http://woodstock.temashdesign.com/electronics/product-category/cellphones/">Cellphones<span
+                                        href="">Cellphones<span
                                             class="child-indicator"></span></a> <span class="count">(24)</span>
                                 <ul class="children">
                                     <li class="cat-item cat-item-168"><a
@@ -3360,5 +3359,6 @@
         <div class="fr-loading-icon"></div>
     </div>
 </div>
+
 </body>
 </html>
